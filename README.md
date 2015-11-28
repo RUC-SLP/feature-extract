@@ -1,7 +1,12 @@
 # feature-extract
 
-## The dir tree
+## The dir structure
 
 - You work dir
--- data
--- feature-extract
+  -  data repo
+    - data
+    - ...
+  -  feature-extract repo
+    - spectrogram
+    - mfcc  // **You opensmile code here** @inksink
+    - ...
