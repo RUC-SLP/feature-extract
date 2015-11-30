@@ -1,13 +1,16 @@
-dir$ = "../../data/data/Barn_Swallow/"
+form Directory Path
+	sentence Dir ../../data/data/Barn_Swallow/
+endform
 
 # FIND ALL MP3 FILES IN THE DIRECTORY
-Create Strings as file list: "fileList", dir$ + "*.mp3"
+listName$ = "fileList"
+Create Strings as file list: listName$, dir$ + "*.mp3"
 numberOfFiles = Get number of strings
 
 # LOOP THROUGH ALL THE MP3 FILES
 for fileNumber to numberOfFiles
 	#OPEN THEM
-	select Strings fileList
+	selectObject: "Strings " + listName$
 	fileName$ = Get string: fileNumber
 	baseFile$ = fileName$ - ".mp3"
 	Read from file: dir$ + "/" + fileName$
@@ -19,11 +22,11 @@ for fileNumber to numberOfFiles
 	Write to matrix text file: dir$ + "/" + baseFile$ + ".txt"
 
 	#CLEAN UP
-	select MFCC 'baseFile$'
-	plus Matrix 'baseFile$'
-	plus Sound 'baseFile$'
+	selectObject: "MFCC " + baseFile$
+	plusObject: "Matrix " + baseFile$
+	plusObject: "Sound " + baseFile$
 	Remove
 endfor
 
-select Strings fileList
+selectObject: "Strings " + listName$
 Remove
