@@ -1,3 +1,0 @@
-# opensmile code here
-
-@inksink
